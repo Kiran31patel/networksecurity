@@ -5,6 +5,8 @@ flask
 numpy
 sqlalchemy
 pytest
+pymongo[srv]==3.12
+certifi
 pymongo
 
--e .
+# -e .

@@ -1,0 +1,2 @@
+[2025-11-18 23:34:21,156] INFO - csv file: Network_Data\phisingData.csv loaded successfully
+[2025-11-18 23:34:38,018] INFO - Data inserted successfully into Mongodb database: NetworkSecurityDB and collection: PhisingDataCollection
