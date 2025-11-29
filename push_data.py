@@ -69,3 +69,4 @@ if __name__=="__main__":
     json_data=network_obj.csv_json_converter(file_path=FILE_PATH)
     records_inserted=network_obj.insert_data_mongidb(records=json_data,database=database,collection=collection)
     print(f"Total records inserted: {records_inserted}")
+     
