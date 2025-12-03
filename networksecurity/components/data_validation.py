@@ -11,6 +11,8 @@ import sys
 import pandas as pd
 
 
+
+
 class DataValidation:
     def __init__(self,data_ingestion_artifact:DataIngestionArtifact,
                  data_validation_config:DataValidationConfig):
