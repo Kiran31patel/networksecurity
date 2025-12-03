@@ -1,9 +1,8 @@
-FROM python:3.10-slim-buster
+FROM python:3.10-slim-bookworm
 
-# Set working directory
 WORKDIR /app
 
-# Install required system packages
+# Install system dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         build-essential \
@@ -14,7 +13,7 @@ RUN apt-get update && \
         unzip && \
     rm -rf /var/lib/apt/lists/*
 
-# Install AWS CLI v2 manually (Debian slim doesn't support apt install awscli)
+# Install AWS CLI v2
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
     unzip awscliv2.zip && \
     ./aws/install && \
@@ -23,9 +22,7 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 # Copy project files
 COPY . .
 
-# Install Python dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Start application
 CMD ["python3", "app.py"]
