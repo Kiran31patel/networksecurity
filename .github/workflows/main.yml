@@ -1,26 +1,17 @@
-name: workflow
+name: Deploy to Render
 
 on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'README.md'
-
-permissions:
-  id-token: write
-  contents: read
 
 jobs:
-  integration:
-    name: Continuous Integration
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - name: Trigger Render Deploy
+        run: |
+          curl -X POST "$RENDER_DEPLOY_HOOK"
 
-      - name: Lint code
-        run: echo "Linting repository"
-
-      - name: Run unit tests
-        run: echo "Running unit tests"
+    env:
+      RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
